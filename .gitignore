@@ -1,0 +1,15 @@
+# Untracked files:
+# ignore files starting with zzz
+zzz*
+# ignore folders starting with zzz
+/zzz/*
+# ignore PDFs
+*.pdf
+# ignore README.md
+README.md
+# ignore spec.js
+*.spec.js
+# ignore testem.json
+testem.json
+# ignore yarn.lock
+yarn.lock
