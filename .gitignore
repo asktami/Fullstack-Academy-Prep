@@ -9,9 +9,7 @@ zzz*
 README.md
 # ignore spec.js
 *.spec.js
-# ignore testem.json
-testem.json
-# ignore package.json
-package.json
+# ignore ALL .json
+*.json
 # ignore yarn.lock
 yarn.lock
