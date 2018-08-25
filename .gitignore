@@ -11,5 +11,7 @@ README.md
 *.spec.js
 # ignore testem.json
 testem.json
+# ignore package.json
+package.json
 # ignore yarn.lock
 yarn.lock
