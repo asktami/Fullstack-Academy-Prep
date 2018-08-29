@@ -50,9 +50,8 @@
 
 
 
-// ALTERNATIVE
+// BEST
 // start at startIdx OR end of the array (default) and go to the beginning
-
 const myLastIndexOf = (arr, searchValue, startIdx = arr.length ) => {
     for ( let i = startIdx ; i >= 0 ; i-- ) {
          if (arr[i] === searchValue) return i;
