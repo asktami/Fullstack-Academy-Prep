@@ -60,3 +60,16 @@ let arr = Array.isArray(twoDimensionalArray) ? twoDimensionalArray : twoDimensio
 
 return arr.reduce((accumulator, element) => accumulator.concat(element), []);
 }
+
+
+
+
+// EXTRA
+// enable deep level array flattening using recursion with arr.reduce() and arr.concat()
+
+function flattenDeep(arr) {
+
+   return arr.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+}
+
+console.log('flattenDeep = ', flattenDeep( [ 1, 2, 3, [1, 2, 3, 4, [2, 3, 4]], [9, 8, 7] ] ));   // [ 1, 2, 3, 1, 2, 3, 4, 2, 3, 4, 9, 8, 7 ]
