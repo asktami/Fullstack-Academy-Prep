@@ -25,7 +25,7 @@ const myReverseAlt = (arr) => {
 }
 
 
-// ALTERNATIVE
+// BEST
 const myReverse = (arr) => {
     let reversedArr = [] ;
 
