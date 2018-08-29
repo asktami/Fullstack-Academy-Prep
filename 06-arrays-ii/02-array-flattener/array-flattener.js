@@ -53,8 +53,10 @@ const arrayFlattenerALT2 = (twoDimensionalArray) => {
 
 
 // BEST - using arr.reduce()
-// NOTE - testem gives error "twoDimensionalArray.reduce is not a function" - don't know why, because this does work!
 const arrayFlattener = (twoDimensionalArray) => {
 
-    return twoDimensionalArray.reduce((accumulator, element) => accumulator.concat(element), []);
+// added to handle input = string vs. an array b/c was getting "twoDimensionalArray.reduce is not a function" from testem
+let arr = Array.isArray(twoDimensionalArray) ? twoDimensionalArray : twoDimensionalArray.split();
+
+return arr.reduce((accumulator, element) => accumulator.concat(element), []);
 }
