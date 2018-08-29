@@ -52,19 +52,9 @@ const arrayFlattenerALT2 = (twoDimensionalArray) => {
 }
 
 
-// BEST
+// BEST - using arr.reduce()
+// NOTE - testem gives error "twoDimensionalArray.reduce is not a function" - don't know why, because this does work!
 const arrayFlattener = (twoDimensionalArray) => {
 
-    let flatArray = twoDimensionalArray.reduce((acc, element) => { 
-        if(Array.isArray(element)) {
-            acc = acc.concat(element) ;
-        } else {
-            acc.push(element) ;
-        }
-        
-    return acc;
-
-    }, []);
-
-    return flatArray;
+    return twoDimensionalArray.reduce((accumulator, element) => accumulator.concat(element), []);
 }
