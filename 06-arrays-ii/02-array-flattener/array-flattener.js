@@ -52,6 +52,7 @@ const arrayFlattenerALT2 = (twoDimensionalArray) => {
 }
 
 
+
 // BEST - using arr.reduce()
 const arrayFlattener = (twoDimensionalArray) => {
 
@@ -63,9 +64,19 @@ return arr.reduce((accumulator, element) => accumulator.concat(element), []);
 
 
 
+// EXTRA - using apply & arr.concat()
+// aka let flattenShallow = [].concat.apply([], ...arr);
+// aka let flattenShallow = Array.prototype.concat.apply([], ...arr)
+// can cause stack overflows for large arrays
+
+let flattenShallow = (arr) => [].concat(...arr);
+
+console.log('flattenShallow = ', flattenShallow( [1,[2, 3], 4] )); // [ 1, 2, 3, 4 ]
+
+
 
 // EXTRA
-// enable deep level array flattening using recursion with arr.reduce() and arr.concat()
+// enables DEEP LEVEL array flattening using recursion, arr.reduce() and arr.concat()
 
 function flattenDeep(arr) {
 
