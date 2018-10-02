@@ -1,0 +1,136 @@
+// ************************************
+// Convert an Array to an Object
+
+1.
+for array = ['cardType', 'iDEBIT'];
+
+function toObject(arr) {
+  let myObj = {};
+  for (var i = 0; i < arr.length; i++)
+    if (arr[i] !== undefined) myObj[i] = arr[i];
+  return myObj;
+}
+
+
+2.
+const myArray = [
+  ['cardType', 'iDEBIT'],
+  ['txnAmount', '17.64'],
+  ['txnId', '20181'],
+  ['txnType', 'Purchase'],
+  ['txnDate', '2015/08/13 21:50:04'],
+  ['respCode', '0'],
+  ['isoCode', '0'],
+  ['authCode', ''],
+  ['acquirerInvoice', '0'],
+  ['message', ''],
+  ['isComplete', 'true'],
+  ['isTimeout', 'false']
+];
+
+
+let myObject = {};
+
+// iterate thru myArray
+for ( let i = 0; i < myArray.length; i++ ) {
+	let objKey = myArray[i][0];
+	myObject[objKey] = myArray[i][1];
+}
+
+
+// ************************************
+// Convert an Object to an Array
+
+1.
+const object1 = {
+  a: 'somestring',
+  b: 42,
+  c: false
+};
+
+-- console.log(Object.keys(object1));	//	["a", "b", "c"]
+
+-- console.log(Object.values(object1));	//	["somestring", 42, false]
+
+-- console.log(Object.entries(object1));	// [["a", "somestring"], ["b", 42], ["c", false]]
+
+
+
+2.
+const object1 = { foo: 'bar', baz: 42 };
+-- console.log(Object.entries(object1));
+
+// => [["foo", "bar"], ["baz", 42]]
+
+
+
+3.
+Converting an Object to an Array of Objects:
+let peopleObj = {
+  jim: {
+    name: "jim",
+    age: 20
+  },
+  tim: {
+    name: "tim",
+    age: 22
+  }
+}
+
+-- console.log(Object.entries(peopleObj)); 
+// => 
+[["jim", [object Object] {
+  age: 20,
+  name: "jim"
+}], ["tim", [object Object] {
+  age: 22,
+  name: "tim"
+}]]
+
+
+-- console.log(Object.keys(peopleObj));
+// => ["jim", "tim"]
+
+
+-- console.log(Object.values(peopleObj));
+// => 
+[[object Object] {
+  age: 20,
+  name: "jim"
+}, [object Object] {
+  age: 22,
+  name: "tim"
+}]
+
+
+
+
+// ************************************
+// Convert an Array/Object to a String
+
+// 1. Use .toString()
+['a', 'b', 'c'].toString(); // 'a,b,c'
+
+// 2. Coerce to string
+['a', 'b', 'c'] + []; // 'a,b,c'
+['a', 'b', 'c'] + ''; // 'a,b,c'
+
+// 3. Use .join()
+['a', 'b', 'c'].join(); // 'a,b,c' (defaults to ',' separator)
+['a', 'b', 'c'].join(''); // 'abc'
+['a', 'b', 'c'].join('-'); // 'a-b-c'
+
+// 4. Use JSON.stringify()
+JSON.stringify(['a', [1], 'b', 'c']); // '['a', [1], 'b','c']'
+
+// 5. Manually, if can't use built-in method...
+function arrayToString(arr) {
+  let str = '';
+  arr.forEach(function(i, index) {
+    str += i;
+    if (index != (arr.length - 1)) {
+      str += ',';
+    };
+  });
+  return str;
+}

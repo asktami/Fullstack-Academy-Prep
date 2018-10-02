@@ -1,0 +1,355 @@
+LOOPS
+CONTINUE keyword 
+- will cause the loop to skip to the next iteration
+- will not do stuff after CONTINUE
+
+for (let i = 10; i >=1; i--) {
+    if (i===7){
+        continue;
+    }
+    console.log('i is:', i);
+}
+// output: 10, 9, 8, 6, 5, 4, 3, 2, 1
+
+
+BREAK keyword
+- breaks out of loop permanently
+- exits the loop
+IF condition will always be true can use a break statement to exit the loop
+
+for (let i = 10; i >=1; i--) {
+    if (i===7){
+        break;
+    }
+    console.log('i is:', i);
+}
+// output: 10, 9, 8
+
+
+MODULO:
+Even: (number % 2 === 0)
+Odd: (number % 2 === 1)
+
+
+COERCION & TRUTHINESS:
+Implicit coercion
+- anything + any string  = string
+
+- do NOT use == (loose equality operator)
+- instead use ===
+
+Truthy and Falsey: values that act true when converted to Boolean
+
+- Examples of truthy values:
+console.log(Boolean('normal string')); // true
+console.log(Boolean(10)); // true
+console.log(Boolean([2,3,4])); // true
+console.log(Boolean({name:'tami'})); // true
+console.log(Boolean(99)); // true
+console.log(Boolean(-5)); // true
+
+console.log(!''); // true
+console.log(!0); // true
+
+
+- Examples of falsey values:
+console.log(Boolean('')); // false
+console.log(Boolean(0)); // false
+console.log(Boolean(null)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean(NaN)); // false
+
+console.log(!true); // false
+console.log(!'hello'); // false
+console.log(![]); // false
+console.log(!{}); // false
+
+- Using the double bang (!!) will give you the truthiness of a variables:
+console.log(!![]); // true
+console.log(!!'is this truthy'); // true
+console.log(!!0); // false
+
+
+*** isisTruthy:
+const isTruthy = (anArg) => {
+    if (anArg) return true;
+
+    switch (anArg) {
+        case false:
+            return 'The boolean value false is falsey';
+        case null:
+            return 'The null value is falsey';
+        case undefined:
+            return 'undefined is falsey';
+        case 0 :
+            return 'The number 0 is falsey (the only falsey number)';
+        case '':
+            return 'The empty string is falsey (the only falsey string)';
+        default:
+            return 'NaN';
+    }
+}
+
+isTruthy('I yearn for truth'); // => true
+isTruthy(null); // => The null value is falsey
+isTruthy(''); //
+isTruthy(0); // The number 0 is falsey (the only falsey number)
+isTruthy();
+isTruthy(null);
+isTruthy(false);
+
+
+*** myOr and myAnd:
+const myOr = (a,b,c) =>  a || b || c;
+const myAnd = (a,b,c) =>  a && b && c;
+
+myOr(true, true, false) === (true || true || false); // => true
+myAnd(1, 'apples', true) === (1 && 'apples' && true); // => true
+
+
+*** onlyOne:
+const onlyOne = (a, b, c) => !!a + !!b + !!c === 1;
+
+onlyOne(false, false, true); // => true
+onlyOne(0, 1, 2) // => false
+
+
+NUMBERS and STRINGS:
+- parseFloat(string) = change string to typeof decimal number
+- parseInt(string) = change string to typeof integer number
+- variable.toString() = change variable to typeof string 
+- variable.toNumber() =  change variable to typeof number
+
+
+
+ARRAYS:
+- created with []
+
+- Array.isArray(variableName) = true if variableName is an array, else false
+
+- let names = []; // create new array
+- let thisVal = names[i]; // get value at index i of the array
+- names[i] = 'newValue'; // change value at index i of the array to newValue
+
+
+// **************************************
+// push (add to end), pop (remove last added), shift (remove from start), unshift (add to start)
+// all affect the original array in place
+// **************************************
+
+// .PUSH(value)
+- names.push('tami'); // ADD elements to the END of the array
+--> adds one or more elements to the end of an array and returns the new length of the array.
+
+// .POP()
+- names.pop(); // removes and RETURNS the LAST element added to the array
+--> removes the last element from an array and returns that element. This method changes the length of the array.
+
+
+// .SHIFT()
+- names.shift();
+--> removes the first element from an array and RETURNS that removed element. This method changes the length of the array.
+
+
+// .UNSHIFT(value)
+- names.unshift('value'); // ADD elements to the START of the array, i.e at index = 0
+-- IF let newElementAtStart = names.unshift('jane'); // newElementAtStart = length of the array, + adds element to start of array
+--> adds one or more elements to the beginning of an array and returns the new length of the array. This method changes the length of the array.
+
+
+// .indexOf(value)
+- names.indexOf('value'); // case-sensitive, returns the INDEX of the found value or -1 if not found
+
+
+// .includes(value)
+- names.includes('value'); // case-sensitive, returns TRUE if value found or FALSE if not found
+
+
+// **************************************
+// SLICE creates a copy and does NOT affect the original array
+// **************************************
+
+// .SLICE(startIndex, endIndex)
+- names.slice(startIndex, endIndex) ; // returns a NEW array with elements at start index to right before end index, i.e. names.slice (2, 4) would return an array with elements at index 2 and 3. Does NOT change the original array;
+
+- names.slice(startIndex); // return a new array with from startIndex to the end
+
+- names.slice(i); // return everything from index i to the end of the array
+ex: names = ['a', 'b', 'c', 'd', 'e'] => names.slice(2) => ['c', 'd', 'e'] 
+
+- names.slice(); // creates a brand new copy of the original array, i.e. let namesCopy= names.slice(); 
+
+
+// .REVERSE()
+- names.reverse();  // does not return anything, reverses the array
+
+
+// .SPLICE(startIndex, NbrOfElementsToDelete, AddElement, AddElement, ...)
+- names.splice(); // inserts and/or removes elements from the MIDDLE of the original array, in-place and does NOT return any values.
+
+- example:
+// remove elements
+let names = ['george', 'john', 'thomas', 'abe'];
+names.splice(1,1); // ['john']
+// and now names = ['george','thomas', 'abe'];
+
+console.log('singleTermPresidens = ', singleTermPresidens);
+console.log('names = ', names);
+
+// insert elements in place of removed elements
+let names = ['george', 'john', 'thomas', 'abe'];
+console.log('names = ', names); //  [ 'george', 'john', 'thomas', 'abe' ]  
+
+let removedNames = names.splice(1, 2, 'a', 'b'); 
+console.log('removedNames = ', removedNames); // [ 'john', 'thomas' ] = array of removed elements
+console.log('names = ', names); // [ 'george', 'a', 'b', 'abe' ]
+
+// INSERT elements in middle of array WITHOUT removing anything
+names = ['george', 'john', 'thomas', 'abe'];
+let moreNames = names.splice(1, 0, 'x', 'y');
+
+console.log('moreNames = ', moreNames); // [] empty array b/c nothing removed
+console.log('names = ', names); // names =  [ 'george', 'x', 'y', 'john', 'thomas', 'abe' ]
+
+
+// .JOIN() = convert array into a STRING with separator and no trailing
+- example:
+let arr = ['a', 'b', 'c'];
+let sentence  = arr.join(', '); //  a, b, c
+
+
+// .CONCAT() = join 2 or more arrays together, result is a new array
+let older = ['ringo', 'john'];
+let younger = ['paul', 'george'];
+ 
+older + younger; // converts arrays to srings and mashes them together
+ // ringo,johnpaul,george 
+
+older.concat(younger); // [ 'ringo', 'john', 'paul', 'george' ] 
+
+// NOTE: if use .push() you get a multi-dimensional array
+older.push(younger);
+console.log(older); // [ 'ringo', 'john', [ 'paul', 'george' ] ]
+
+
+// MULTI-DIMENSIONAL ARRAYS
+let rsvpGroups = [['jane', 'mel'], 'jack', ['rohan', 'david', 'meg']];
+
+// list every element from rsvpGroups array
+for (let i = 0; i < rsvpGroups.length; i++){
+
+    let element = rsvpGroups[i];
+
+        if( Array.isArray(element) ) {
+
+            for (let j = 0; j < element.length; j++) {
+                console.log(element[j]);
+            }
+        } else {
+            console.log(element); // when element is not an array
+        }
+}
+
+
+// GRIDS
+// use a nested array to represent a grid, eg: 3 row x 3 column matrix
+
+let grid = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [10, 11, 12],
+];
+
+// get a row
+grid[1];  // 2nd row [ 4, 5, 6 ]
+
+// 2nd column = always element at index 1 of every row
+let hardcode2ndColumn = [
+    grid[0][1], 
+    grid[1][1],
+    grid[2][1]
+];
+
+hardcode2ndColumn;  // 2nd column [ 2, 5, 8 ] 
+
+// how to get a 2nd column - using FOR loop
+// will work no matter how many rows exist
+// hardcode 1 b/c 1 = 2nd column
+
+let secondCol = [];
+for (let i = 0; i < grid.length; i++) {
+    secondCol.push( grid[i][1] );
+}
+secondCol;	// [ 2, 5, 8, 11 ]
+
+
+SCOPE
+- variable value available btw {}
+- if value not found inside {} looks up until found; like a russian doll
+- when passing argument to a function, that means the variable HAS exists but has no value, aka is undefined, SO the function will NOT look up into any outerfunctions/globals for the value of the variable
+- vars declared inside functions without var or let or const = global scope
+- vars declared outside functions = global scope
+example: function myFunction(x) {}  => x is undefined
+
+
+OBJECTS
+- created with {}
+- is a collection of key-value pairs
+-  instead of number indexes starting at 0, objects use string indexes called "keys"
+- like an associative array
+- arrays are in ORDER, objecst are NOT
+
+typeof [] => object for arrays
+typeof {} => o object and for objects
+
+object['key index with spaces'] => value at that index position
+objet.onewordkeyindex => value at that index position
+
+-  if ('key' in objectName)  => use IN to check if value exists in object by looking for the key
+
+- for (let key in objectName) {} => use for...in loop to iterate thru object
+
+EXAMPLES:
+
+-How to get object keys and values:
+for (let key in objectName) {
+    // the value of the variable key will change to each of the keys in the object
+    
+    // to print out the KEYS from this object
+    console.log(key);
+
+    // to print out the VALUES from this object
+    console.log(objectName[key]);
+}
+
+- Alternative:
+for (let key in objectName) {
+    console.log(key + ' = ' + objectName[key]);    // use bracket notation for value
+}
+
+
+-How to get all keys without for...in loop:
+- Object.keys(objectName) // output is an array with all the keys
+
+Example:
+let keys = Object.keys(objectName);
+
+for (let i = 0; i < keys.length; i++){
+    console.log(objectName[keys[i]]);  //output values
+}
+
+Example:
+for (let i = 0; i < keys.length; i++){
+    console.log(keys[i] + ' = ' + objectName[keys[i]]);  //output key = value
+}
+
+
+Object.entries(objectName)):
+// using Object.entries: returns an array of arrays for each key-value pair in an object
+// converts {k1: 'v1', k2: 'v2'} into [['k1', 'v1'], ['k2', 'v2']]
+
+--> see Objects excercise 7-attendance-check
+
+
+

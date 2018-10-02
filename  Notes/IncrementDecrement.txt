@@ -1,0 +1,31 @@
+ Using ++ or -- BEFORE  our variable, the operation adds/subtracts 1 BEFORE returning. This allows us to instantly see the resulting value.
+
+ Using ++ or -- AFTER our variable, the operation does NOT add/subtract before returning.
+
+
+ AFTER THE OPERAND ********
+ Increment
+ let a = 1;
+
+ console.log(a++);     1  --> return and then increment by 1
+ console.log(a);       2
+
+ Decrement
+ let b = 1;
+
+ console.log(b--);     1    --> return and then decrement by 1s
+ console.log(b);       0
+
+
+ BEFORE THE OPERAND ********
+ Increment
+ let a = 1;
+
+ console.log(++a);     2    --> increment by 1 and then return
+ console.log(a);       2
+
+ Decrement
+ let b = 1;
+
+ console.log(--b);     0    --> decrement by 1 and then return
+ console.log(b);       0
